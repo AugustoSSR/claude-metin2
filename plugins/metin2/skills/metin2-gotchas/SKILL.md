@@ -52,7 +52,7 @@ Só o que custou retrabalho real. Para as regras do client, veja `metin2-client-
 18. DbContext curto por operação (o do personagem descartado no logout não salva); `IServiceScopeFactory`, nunca guardar
     `IServiceProvider` do pacote; o mapa faz Dispose da entidade ao sair: gravar ANTES de `DespawnEntity`.
 19. Esperar resposta do client dentro de handler trava a conexão (pacotes em sequência): menus fire-and-forget. Nunca
-    mandar chat fora da fase GAME (na LOADING, antes do 0x71, o client trava).
+    mandar chat fora da fase GAME (antes de o client entrar na fase GAME, ele trava).
 20. Textos de pacote/proto em **Latin-1 (cp1252)**, nome de item/mob <= 23 bytes; mensagem servidor->client < ~1000 bytes.
 21. Gerador que regrava arquivo de outro gerador duplica/zera linhas: ler o cabeçalho, rodar na ordem e restaurar com
     `git checkout -- <arquivo>` o que não era para mudar.

@@ -7,7 +7,7 @@ license: PolyForm-Noncommercial-1.0.0
 # Metin2: padrão de sistema novo (servidor + client)
 
 Receita que funcionou para sistemas que tocam os dois lados (peças de equipamento, bônus, janelas). Os nomes de pastas
-e de scripts abaixo são a **convenção do nosso fork**: adapte ao layout do seu projeto, mas mantenha a separação de
+e de scripts abaixo são a **convenção de um projeto nosso**: adapte ao layout do seu projeto, mas mantenha a separação de
 responsabilidades. Antes de escrever, **leia o plano da área** (um `PLANO-*.md` na raiz, se houver) e confira se já
 existe sistema equivalente: estender é melhor que duplicar.
 

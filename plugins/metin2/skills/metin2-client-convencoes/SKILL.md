@@ -19,7 +19,7 @@ o que vale para o client em geral. `<CLIENT_DIR>` é a raiz do seu client.
 
 ## Regras
 
-1. **Nunca apagar arquivo do client original.** O original vira `<arquivo>.original` (convenção do nosso empacotador; adapte ao seu pipeline).
+1. **Nunca apagar arquivo do client original.** O original vira `<arquivo>.original` (convenção de um empacotador nosso; adapte ao seu pipeline).
 2. **Módulo novo do root**: criar `<nome>.py.original` **vazio** ao lado; sem isso o empacotador pode não incluir o
    módulo e o `import` derruba o client no login.
 3. **Encoding**: o `.py` é ASCII; acento vira escape latin-1 (`\xe1`, `\xe3`...), nunca UTF-8 no arquivo. O `game.py` é

@@ -1,7 +1,7 @@
 # Servidor de teste com QuantumCore X
 
 Notas de quem subiu um servidor Metin2 privado de teste com o **QuantumCore X** (reimplementação em C#/.NET, licença
-MPL-2.0, sem código da Ymir) e o evoluiu até um servidor com sistemas próprios. Registra decisões, a topologia e o que
+MPL-2.0, [LICENSE do upstream](https://github.com/MeikelLP/quantum-core-x/blob/main/LICENSE), sem código da Ymir) e o evoluiu até um servidor com sistemas próprios. Registra decisões, a topologia e o que
 quebrou.
 
 ## Escolha da base
@@ -21,7 +21,7 @@ quebrou.
   `appsettings.json` também seria lido desse *content root*, configurações de mapa vão por variáveis de ambiente
   (`maps__N`).
 - **IP anunciado ao client ≠ IP de bind.** No upstream, o client recebia o IP do container ao entrar no jogo. A solução
-  foi uma opção de configuração do IP público anunciado (no nosso fork, `Hosting:PublicIpAddress`). Sem isso, o login
+  foi uma opção de configuração do IP público anunciado (um projeto pode adicionar uma opção como `Hosting:PublicIpAddress`). Sem isso, o login
   "funciona" e a entrada no jogo falha.
 - A imagem do Dockerfile do game precisa ser a do runtime **ASP.NET** (`aspnet`), não a `runtime`: com a segunda, o
   container caía com "No frameworks were found".
@@ -29,6 +29,8 @@ quebrou.
   usar.
 
 ## Bugs do upstream que aparecem cedo
+
+Observados no upstream em out/2026, sem versão registrada e **não verificados contra o HEAD atual**; podem já estar corrigidos.
 
 - **Personagem novo derruba a conexão**: o grupo de habilidade `UNKNOWN = 0` virava índice `-1`.
 - **Classes femininas derrubam a conexão**: a classe com gênero era usada como índice direto.

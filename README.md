@@ -4,8 +4,6 @@ Plugin do Claude Code com o que aprendemos mantendo um servidor Metin2 em Quantu
 C++): dois agentes de trabalho (servidor e client), armadilhas de ferramenta e de deploy, convenções para editar o
 client, o padrão de um sistema novo que toca servidor e client, e o ciclo de publicação.
 
-**Estado: privado, em revisão.** Só vira público depois de uma revisão independente.
-
 ## O que tem
 
 | Item | Para que serve |
