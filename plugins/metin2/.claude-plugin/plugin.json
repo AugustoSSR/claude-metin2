@@ -1,7 +1,7 @@
 {
   "name": "metin2",
-  "version": "0.1.0",
-  "description": "Skills e convencoes para servidor Metin2 (QuantumCore X, C#) e client TMP4 (Python 2, C++)",
+  "version": "0.2.0",
+  "description": "Skills, agentes e convencoes para servidor Metin2 (QuantumCore X, C#) e client (Python 2, C++)",
   "author": {
     "name": "Augusto Rosa"
   }

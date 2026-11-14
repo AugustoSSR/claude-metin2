@@ -3,12 +3,12 @@
   "owner": {
     "name": "Augusto Rosa"
   },
-  "description": "Skills e convencoes para servidor Metin2 (QuantumCore X, C#) e client TMP4 (Python 2, C++)",
+  "description": "Skills, agentes e convencoes para servidor Metin2 (QuantumCore X, C#) e client (Python 2, C++)",
   "plugins": [
     {
       "name": "metin2",
       "source": "./plugins/metin2",
-      "description": "Skills e convencoes para servidor Metin2 (QuantumCore X, C#) e client TMP4 (Python 2, C++)"
+      "description": "Skills, agentes e convencoes para servidor Metin2 (QuantumCore X, C#) e client (Python 2, C++)"
     }
   ]
 }

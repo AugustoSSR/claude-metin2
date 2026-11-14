@@ -1,10 +1,10 @@
 ---
 name: metin2-gotchas
-description: 'Use no início de qualquer trabalho em servidor Metin2 baseado em QuantumCore X (C#) ou em client TMP4, e antes de commitar, rodar gerador, trocar pack ou fazer deploy. Armadilhas transversais: ferramentas no Windows + Git Bash, git compartilhado, client aberto, deploy que derruba jogador, teto de 32 bits, Redis/BigInteger, encoding Latin-1.'
+description: 'Use no início de qualquer trabalho em servidor Metin2 baseado em QuantumCore X (C#) ou em client Metin2, e antes de commitar, rodar gerador, trocar pack ou fazer deploy. Armadilhas transversais: ferramentas no Windows + Git Bash, git compartilhado, client aberto, deploy que derruba jogador, teto de 32 bits, Redis/BigInteger, encoding Latin-1.'
 license: PolyForm-Noncommercial-1.0.0
 ---
 
-# Metin2 (QuantumCore X + client TMP4): gotchas transversais
+# Metin2 (QuantumCore X + client Metin2): gotchas transversais
 
 Só o que custou retrabalho real. Para as regras do client, veja `metin2-client-convencoes`.
 
@@ -37,7 +37,7 @@ Só o que custou retrabalho real. Para as regras do client, veja `metin2-client-
 ## Client e deploy
 
 13. **Client aberto = nada de trocar pack/exe.** `taskkill` pode falhar com "Acesso negado" (processo como admin):
-    reconferir `tasklist`, senão pedir para fechar. Nunca apagar arquivo do client original: guardar como `.original-tmp4`.
+    reconferir `tasklist`, senão pedir para fechar. Nunca apagar arquivo do client original: guardar como `.original`.
 14. **Deploy derruba quem está em jogo.** "Pode dar deploy" vale para o deploy pedido, não para os seguintes; conferir
     quantos jogadores estão online antes e acumular mudança não urgente para a janela combinada.
 15. Separe os deploys (servidor, site, dados, bot): só o do servidor recria game/auth e derruba jogador. Confirme no
@@ -48,7 +48,7 @@ Só o que custou retrabalho real. Para as regras do client, veja `metin2-client-
 16. **Teto int32:** HP/EXP/gold de mob e proto ficam em ~2,1 bi; acima disso vai por tabela de valores própria, não pelo proto.
 17. **Tipo novo em `PlayerData`/`ItemInstance` (ex.: `BigInteger`) quebra o cache Redis** (o formatador grava
     `{"IsZero":true}` e lê 0): serializar como string (propriedade-texto + `[JsonIgnore]` para System.Text.Json e
-    Newtonsoft) e conferir `redis-cli get player:<id>` depois de logar. Banco testado não prova o cache.
+    Newtonsoft) e conferir `redis-cli get player:<id>` depois de logar. Banco testado não prova o cache (caso completo em `docs/redis-biginteger-json.md`).
 18. DbContext curto por operação (o do personagem descartado no logout não salva); `IServiceScopeFactory`, nunca guardar
     `IServiceProvider` do pacote; o mapa faz Dispose da entidade ao sair: gravar ANTES de `DespawnEntity`.
 19. Esperar resposta do client dentro de handler trava a conexão (pacotes em sequência): menus fire-and-forget. Nunca

@@ -1,10 +1,10 @@
 ---
 name: metin2-client-convencoes
-description: 'Use ANTES de editar o client Metin2 TMP4 (Python 2 do root, uiscript, locale, C++ do exe) ou criar comando servidor->client: encoding latin-1/CRLF, handler do game.py, limite de mensagem, .original-tmp4, limites de vnum/nome.'
+description: 'Use ANTES de editar o client Metin2 (Python 2 do root, uiscript, locale, C++ do exe) ou criar comando servidor->client: encoding latin-1/CRLF, handler do game.py, limite de mensagem, .original, limites de vnum/nome.'
 license: PolyForm-Noncommercial-1.0.0
 ---
 
-# Metin2 client TMP4: convenções e gotchas
+# Metin2 client Metin2: convenções e gotchas
 
 Para criar ou diagnosticar uma janela (uiscript, classes `ui*.py`) use uma skill de UI dedicada, se houver; aqui só
 o que vale para o client em geral. `<CLIENT_DIR>` é a raiz do seu client.
@@ -14,13 +14,13 @@ o que vale para o client em geral. `<CLIENT_DIR>` é a raiz do seu client.
 - Python 2 do client: `<CLIENT_DIR>/<pacote>/root` e `<pacote>/uiscript/uiscript`. A pasta `locale/<idioma>/ui` tem
   **prioridade** sobre o uiscript (ex.: a barra de baixo costuma vir de `taskbar.py` no locale).
 - C++ do exe: o projeto do client no Visual Studio; compilar com
-  `MSBuild.exe client.sln /m /p:Configuration=Distribute /p:Platform=Win32`. Arquivo alterado leva `.original-tmp4`.
+  `MSBuild.exe client.sln /m /p:Configuration=Distribute /p:Platform=Win32`. Arquivo alterado leva `.original`.
 - Os `.py` entram no pack por um gerador de protos/packs do seu pipeline.
 
 ## Regras
 
-1. **Nunca apagar arquivo do client original.** O original vira `<arquivo>.original-tmp4`.
-2. **Módulo novo do root**: criar `<nome>.py.original-tmp4` **vazio** ao lado; sem isso o empacotador pode não incluir o
+1. **Nunca apagar arquivo do client original.** O original vira `<arquivo>.original` (convenção do nosso empacotador; adapte ao seu pipeline).
+2. **Módulo novo do root**: criar `<nome>.py.original` **vazio** ao lado; sem isso o empacotador pode não incluir o
    módulo e o `import` derruba o client no login.
 3. **Encoding**: o `.py` é ASCII; acento vira escape latin-1 (`\xe1`, `\xe3`...), nunca UTF-8 no arquivo. O `game.py` é
    ISO-8859 com **CRLF**. **Detectar CRLF/LF por arquivo** antes de editar e preservar (arquivo misto existe). Gravar
@@ -48,5 +48,5 @@ o que vale para o client em geral. `<CLIENT_DIR>` é a raiz do seu client.
 
 ## Verificação rápida antes de entregar
 
-`file <arquivo>` (latin-1/CRLF preservados); `grep -n "\*dados"` no `game.py` (deve ser vazio); `.original-tmp4`
+`file <arquivo>` (latin-1/CRLF preservados); `grep -n "\*dados"` no `game.py` (deve ser vazio); `.original`
 presente para todo módulo novo; vnums e nomes dentro dos limites; boot do client sem `syserr.txt` novo.
