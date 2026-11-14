@@ -1,6 +1,6 @@
 {
   "name": "metin2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Skills, agentes e convencoes para servidor Metin2 (QuantumCore X, C#) e client (Python 2, C++)",
   "author": {
     "name": "Augusto Rosa"
